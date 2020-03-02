@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE s SYSTEM "s.dtd">
+<?xml-stylesheet type="text/css" href="s.css"?>
+ <?xml-stylesheet type="text/xsl" href="s.xsl"?>
+<s>
+    <etudiant>
+      <nom>Ark</nom>
+      <prenom>Dakar</prenom>
+      <matricule>q001</matricule>
+      <s1>10</s1>
+      <s2>8</s2>
+      <credits>45</credits>
+    </etudiant>
+    <etudiant>
+      <nom>BSA</nom>
+      <prenom>GAZA</prenom>
+      <matricule>16330</matricule>
+      <s1>16</s1>
+      <s2>6</s2>
+      <credits>60</credits>
+    </etudiant>
+ </s>

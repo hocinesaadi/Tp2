@@ -1,0 +1,120 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">
+  <xsl:template match="/">
+    <htm>
+      <head>
+        <link rel="stylesheet" type="text/css" href="s.css" />
+      </head>
+      <body>
+
+        <div>
+          <h2>Lister dies students Ave casement</h2>
+        </div>
+        <table border="1">
+          <tr bgcolor="#9acd32">
+            <th style="text-align:left">Nome</th>
+            <th style="text-align:left">Prenom</th>
+            <th style="text-align:left">Matriculate</th>
+            <th style="text-align:left">S1</th>
+            <th style="text-align:left">S2</th>
+            <th style="text-align:left">Credits</th>
+            <th style="text-align:left">Doyenne</th>
+            <th style="text-align:left">Admissibility</th>
+          </tr>
+          <xsl:for-each select="Liste_Detudiants/etudiant">
+            <xsl:sort select="(s1+s2) div 2" />
+            <tr>
+
+              <td>
+                <xsl:value-of select="nom" />
+              </td>
+              <td>
+                <xsl:value-of select="prenom" />
+              </td>
+              <td>
+                <xsl:value-of select="matricule" />
+              </td>
+              <td>
+                <xsl:value-of select="s1" />
+              </td>
+              <td>
+                <xsl:value-of select="s2" />
+              </td>
+              <td>
+                <xsl:value-of select="credits" />
+              </td>
+              <td>
+                <xsl:value-of select="(s1+s2) div 2" />
+              </td>
+
+              <xsl:if test="s1+s2 &gt;= 20">
+                <td>Adm is</td>
+              </xsl:if>
+
+              <xsl:if test="s1+s2 &lt; 20 and credits &gt;=45 ">
+                <td>Adm is Ave deter</td>
+              </xsl:if>
+
+              <xsl:if test="s1+s2 &lt; 20 and credits &lt;45">
+                <td>Non Adams</td>
+              </xsl:if>
+
+
+            </tr>
+          </xsl:for-each>
+
+        </table>
+
+        <div class="nbr">
+          <xsl:for-each select="Liste_Detudiants/etudiant">
+            <xsl:sort select="(s1+s2) div 2" data-type="number" order="descending" />
+            <xsl:if test="position() = 1">
+              <div class="nbr2" style="color:green;">
+                Miller doyenne:
+                <xsl:value-of select="(s1+s2) div 2" />
+              </div>
+            </xsl:if>
+            <xsl:if test="position() = last()">
+              <div class="nbr2" style="color:red;">
+                Pi re doyenne:
+                <xsl:value-of select="(s1+s2) div 2" />
+              </div>
+            </xsl:if>
+          </xsl:for-each>
+
+
+          <div class="nbr2">
+            Doyenne DE la class
+            <xsl:value-of select="format-number((sum(/liste/etudiant/s1)+sum(/liste/etudiant/s2)) div (2*count(/liste/etudiant)),'#.##') " />
+          </div>
+
+        </div>
+
+
+        <div class="nbr">
+
+          <div class="nbr2">
+            Hombre to tale dies Students:
+            <xsl:value-of select="count(/Liste_Detudiants/etudiant)" />
+          </div>
+
+          <div class="nbr2" id="good">
+            Adams:
+            <xsl:value-of select="count(/Liste_Detudiants/etudiant[credits=45])" />
+          </div>
+
+          <div class="nbr2" id="warning">
+            Adams Ave deter:
+            <xsl:value-of select="count(/Liste_Detudiants/etudiant[credits &gt;= 45 and credits &lt; 60])" />
+          </div>
+
+          <div class="nbr2" id="bad">
+            non Adams:
+            <xsl:value-of select="count(/Liste_Detudiants/etudiant[credits &lt; 45])" />
+          </div>
+        </div>
+
+      </body>
+    </html>
+  </xsl:template>
+</xsl:stylesheet>

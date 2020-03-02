@@ -1,0 +1,8 @@
+<!ELEMENT s (etudiant+)>
+<!ELEMENT etudiant (nom,prenom,matricule,s1,s2,credits)>
+<!ELEMENT nom (#PCDATA)>
+<!ELEMENT prenom (#PCDATA)>
+<!ELEMENT matricule (#PCDATA)>
+<!ELEMENT s1 (#PCDATA)>
+<!ELEMENT s2 (#PCDATA)>
+<!ELEMENT credits (#PCDATA)>
